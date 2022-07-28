@@ -163,9 +163,14 @@
 								</div>
 							</div>
 							<ul class="actions">
-								<li><a href="" class="button submit">Enviar Mensaje</a></li>
+								<!-- <li><a href="" class="button submit">Enviar Mensaje</a></li> -->
 							</ul>
 						</form>
+
+						<!-- LINEA AGREGADA PARA EL FORMULARIO -->
+
+						<a href="mailto:jdfioretti@gmail.com" id="Prueba" class="button">Enviar Mensaje</a>
+
 					</section>
 					<section>
 						<ul class="contact">
@@ -217,6 +222,25 @@
 	</footer>
 
 	<!-- Scripts -->
+
+	<!-- NUEVO SCRIPT AGREGADO-->
+
+	<script src="assets/js/jquery.min.js">
+		const formula = document.querySelector('#form');
+		const buttonMail = document.querySelector('#Prueba');
+
+		formula.addEventListener('submit', handleSubmit)
+
+		function handleSubmit(event) {
+			event.preventDefault();
+			const form = new FormData(this);
+			console.log(form.get('name'));
+			buttonMail.setAttribute('href', `mailto:jdfioretti@gmail.com?subject= ${form.get('name')} ${form.get('email')}&body= ${form.get('mesagge')}`)
+			buttonMail.click();
+		}
+	</script>
+
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -225,17 +249,7 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
-	<!-- <script>
-		const $form = document.querySelector('#form');
 
-		$form.addEventListener('submit', handleSubmit)
-
-		function handleSubmit(event) {
-			event.preventDefault();
-			const form = new FormData(this);
-			console.log(form.get('name'));
-		}
-	</script> -->
 
 </body>
 
